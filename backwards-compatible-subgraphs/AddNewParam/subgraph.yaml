@@ -1,0 +1,26 @@
+specVersion: 0.0.2
+schema:
+  file: ../schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: MyContractV2_AddEventParam
+    network: matic
+    source:
+      address: "0xa57a033bf04905325CaB3d38da97eB339BF8D13C"
+      abi: MyContractV2_AddEventParam
+      startBlock: 31429649
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - MyEntity
+      abis:
+        - name: MyContractV2_AddEventParam
+          file: ../artifacts/contracts/1-MyContract_AddEventParam.sol/MyContractV2_AddEventParam.json
+      eventHandlers:
+        - event: CreateSuccess(string,string)
+          handler: handleCreateSuccessV1
+        - event: CreateSuccess(string,string,uint256)
+          handler: handleCreateSuccessV2
+      file: ../src/1_Add_New_Parameter/mapping.ts

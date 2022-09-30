@@ -1,0 +1,26 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: MyContractV2_NewEvent
+    network: matic
+    source:
+      address: "0xa57a033bf04905325CaB3d38da97eB339BF8D13C"
+      abi: MyContractV2_NewEvent
+      startBlock: 31429649
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - MyEntity
+      abis:
+        - name: MyContractV2_NewEvent
+          file: ./artifacts/contracts/0-MyContract_AddNewEvent.sol/MyContractV2_AddNewEvent.json
+      eventHandlers:
+        - event: CreateSuccess(string,string)
+          handler: handleCreateSuccess
+        - event: AddAge(string,uint256)
+          handler: handleAddAge
+      file: ./src/mapping.ts

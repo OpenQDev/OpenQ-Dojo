@@ -1,0 +1,5 @@
+type MyEntity @entity {
+	id: ID!
+	name: String
+	age: BigInt
+}

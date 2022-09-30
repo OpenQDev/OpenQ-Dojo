@@ -1,0 +1,41 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "/Users/alo/OpenQ-Fullstack/OpenQ-Dojo/b2/AddNewEvent/contracts/0-MyContract_AddNewEvent.sol": {
+      "lastModificationDate": 1664552686918,
+      "contentHash": "e7c195bb9cb52e8900bc6265047f2d35",
+      "sourceName": "contracts/0-MyContract_AddNewEvent.sol",
+      "solcConfig": {
+        "version": "0.8.16",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.16"
+      ],
+      "artifacts": [
+        "MyContractV1_AddNewEvent",
+        "MyContractV2_AddNewEvent"
+      ]
+    }
+  }
+}
