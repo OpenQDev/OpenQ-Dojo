@@ -1,7 +1,6 @@
 import { ethereum, log } from '@graphprotocol/graph-ts'
-import { CreateSuccess } from "../../2-generated-abi-encode/MyContractV2_EncodedData/MyContractV2_EncodedData";
-import { MyEntity } from "../../2-generated-abi-encode/schema"
-import { tuplify } from './utils';
+import { CreateSuccess } from "../generated/MyContractV2_EncodedData/MyContractV2_EncodedData";
+import { MyEntity } from "../generated/schema"
 
 export default function handleCreateSuccess_ABI_Encoding(event: CreateSuccess): void {
 	let entity = new MyEntity(event.params.id)
@@ -9,12 +8,11 @@ export default function handleCreateSuccess_ABI_Encoding(event: CreateSuccess): 
 	let version = event.params.version
 
 	let decoded: ethereum.Value[] = []
-	const tuplifyEncodedData = tuplify(event.params.data)
 
 	if (version == 1) {
-		decoded = ethereum.decode("(string)", tuplifyEncodedData)!.toTuple();
+		decoded = ethereum.decode("(string)", event.params.data)!.toTuple();
 	} else if (version == 2) {
-		decoded = ethereum.decode("(string,uint256)", tuplifyEncodedData)!.toTuple();
+		decoded = ethereum.decode("(string,uint256)", event.params.data)!.toTuple();
 		entity.age = decoded[1].toBigInt()
 	}
 

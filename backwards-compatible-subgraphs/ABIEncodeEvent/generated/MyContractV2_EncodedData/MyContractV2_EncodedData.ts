@@ -10,28 +10,6 @@ import {
   BigInt
 } from "@graphprotocol/graph-ts";
 
-export class AddAge extends ethereum.Event {
-  get params(): AddAge__Params {
-    return new AddAge__Params(this);
-  }
-}
-
-export class AddAge__Params {
-  _event: AddAge;
-
-  constructor(event: AddAge) {
-    this._event = event;
-  }
-
-  get id(): string {
-    return this._event.parameters[0].value.toString();
-  }
-
-  get age(): BigInt {
-    return this._event.parameters[1].value.toBigInt();
-  }
-}
-
 export class CreateSuccess extends ethereum.Event {
   get params(): CreateSuccess__Params {
     return new CreateSuccess__Params(this);
@@ -49,14 +27,18 @@ export class CreateSuccess__Params {
     return this._event.parameters[0].value.toString();
   }
 
-  get name(): string {
-    return this._event.parameters[1].value.toString();
+  get data(): Bytes {
+    return this._event.parameters[1].value.toBytes();
+  }
+
+  get version(): i32 {
+    return this._event.parameters[2].value.toI32();
   }
 }
 
-export class MyContractV2_NewEvent extends ethereum.SmartContract {
-  static bind(address: Address): MyContractV2_NewEvent {
-    return new MyContractV2_NewEvent("MyContractV2_NewEvent", address);
+export class MyContractV2_EncodedData extends ethereum.SmartContract {
+  static bind(address: Address): MyContractV2_EncodedData {
+    return new MyContractV2_EncodedData("MyContractV2_EncodedData", address);
   }
 
   VERSION_1(): i32 {

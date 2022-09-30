@@ -1,6 +1,6 @@
 specVersion: 0.0.2
 schema:
-  file: ../schema.graphql
+  file: ./schema.graphql
 dataSources:
   - kind: ethereum/contract
     name: MyContractV2_EncodedData
@@ -17,7 +17,7 @@ dataSources:
         - MyEntity
       abis:
         - name: MyContractV2_EncodedData
-          file: ../artifacts/contracts/2-MyContract_EncodedData.sol/MyContractV2_EncodedData.json
+          file: ./artifacts/contracts/MyContractV2_EncodedData.sol/MyContractV2_EncodedData.json
       eventHandlers:
         - event: CreateSuccess(string,bytes,uint24)
           handler: handleCreateSuccessV2

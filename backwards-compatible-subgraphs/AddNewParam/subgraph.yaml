@@ -1,6 +1,6 @@
 specVersion: 0.0.2
 schema:
-  file: ../schema.graphql
+  file: ./schema.graphql
 dataSources:
   - kind: ethereum/contract
     name: MyContractV2_AddEventParam
@@ -17,10 +17,10 @@ dataSources:
         - MyEntity
       abis:
         - name: MyContractV2_AddEventParam
-          file: ../artifacts/contracts/1-MyContract_AddEventParam.sol/MyContractV2_AddEventParam.json
+          file: ./artifacts/contracts/1-MyContract_AddEventParam.sol/MyContractV2_AddEventParam.json
       eventHandlers:
         - event: CreateSuccess(string,string)
           handler: handleCreateSuccessV1
         - event: CreateSuccess(string,string,uint256)
           handler: handleCreateSuccessV2
-      file: ../src/1_Add_New_Parameter/mapping.ts
+      file: ./src/mapping.ts

@@ -1,5 +1,5 @@
-import { CreateSuccess1 } from "../../1-generated-add-param/MyContractV2_AddEventParam/MyContractV2_AddEventParam"
-import { MyEntity } from "../../1-generated-add-param/schema"
+import { CreateSuccess1 } from "../generated//MyContractV2_AddEventParam/MyContractV2_AddEventParam"
+import { MyEntity } from "../generated/schema"
 
 export default function handleCreateSuccess_New_Event(event: CreateSuccess1): void {
 	let entity = new MyEntity(event.params.id)

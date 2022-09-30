@@ -1,10 +1,10 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "/Users/alo/OpenQ-Fullstack/OpenQ-Dojo/b2/AddNewEvent/contracts/0-MyContract_AddNewEvent.sol": {
-      "lastModificationDate": 1664552686918,
-      "contentHash": "e7c195bb9cb52e8900bc6265047f2d35",
-      "sourceName": "contracts/0-MyContract_AddNewEvent.sol",
+    "/Users/alo/OpenQ-Fullstack/OpenQ-Dojo/backwards-compatible-subgraphs/ABIEncodeEvent/contracts/MyContractV2_EncodedData.sol": {
+      "lastModificationDate": 1664553239677,
+      "contentHash": "dd0f795ff83e7aa71cd9716a95c0bfa8",
+      "sourceName": "contracts/MyContractV2_EncodedData.sol",
       "solcConfig": {
         "version": "0.8.16",
         "settings": {
@@ -33,8 +33,8 @@
         "0.8.16"
       ],
       "artifacts": [
-        "MyContractV1_AddNewEvent",
-        "MyContractV2_AddNewEvent"
+        "MyContractV1_EncodedData",
+        "MyContractV2_EncodedData"
       ]
     }
   }
