@@ -16,14 +16,12 @@ describe('handleCreateSuccess', () => {
 
 	test('handleCreateSuccess correctly process CreateSuccess event', () => {
 		// ARRANGE
-		let version = 2
 		let mockId = 'abc123'
 		let expectedName = 'Flaco'
-		let expectedAge = '25'
 
 		let newCreateSuccessEvent = createNewCreateSuccessEvent(
 			mockId,
-			version.toString()
+			expectedName
 		)
 
 		// ACT
@@ -35,16 +33,15 @@ describe('handleCreateSuccess', () => {
 		// ASSERT
 		assert.fieldEquals('MyEntity', mockId, 'id', mockId)
 		assert.fieldEquals('MyEntity', mockId, 'name', expectedName)
-		assert.fieldEquals('MyEntity', mockId, 'age', expectedAge)
 	})
 })
 
-export function createNewCreateSuccessEvent(id: string, version: string): CreateSuccess {
+export function createNewCreateSuccessEvent(id: string, name: string): CreateSuccess {
 	let newCreateSuccessEvent = changetype<CreateSuccess>(newMockEvent());
 
 	let parameters: Array<ethereum.EventParam> = [
 		new ethereum.EventParam("id", ethereum.Value.fromString(id)),
-		new ethereum.EventParam("version", ethereum.Value.fromUnsignedBigInt(BigInt.fromString(version))),
+		new ethereum.EventParam("name", ethereum.Value.fromString(name)),
 	]
 
 	newCreateSuccessEvent.parameters = parameters;

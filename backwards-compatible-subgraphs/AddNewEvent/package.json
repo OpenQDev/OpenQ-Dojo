@@ -12,7 +12,7 @@
 	},
 	"dependencies": {
 		"@graphprotocol/graph-cli": "0.22.3",
-		"@graphprotocol/graph-ts": "0.22.1",
+		"@graphprotocol/graph-ts": "0.27.0",
 		"hardhat": "^2.11.2"
 	},
 	"devDependencies": {
