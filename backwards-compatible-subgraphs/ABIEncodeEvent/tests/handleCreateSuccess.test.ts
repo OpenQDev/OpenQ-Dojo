@@ -1,5 +1,5 @@
 import { Bytes, BigInt, Address, store, Entity, ethereum } from '@graphprotocol/graph-ts';
-import { CreateSuccess } from "../generated/MyContractV2_NewEvent/MyContractV2_NewEvent";
+import { CreateSuccess } from "../generated/MyContractV2_EncodedData/MyContractV2_EncodedData";
 import { newMockEvent, test, assert, clearStore, afterEach, describe, beforeEach, log, logStore } from "matchstick-as/assembly/index";
 import { handleCreateSuccess } from "../src/mapping";
 
@@ -16,14 +16,16 @@ describe('handleCreateSuccess', () => {
 
 	test('handleCreateSuccess correctly process CreateSuccess event', () => {
 		// ARRANGE
-		let version = 2
+		let version = '2';
 		let mockId = 'abc123'
 		let expectedName = 'Flaco'
-		let expectedAge = '25'
+		let age = '10'
 
 		let newCreateSuccessEvent = createNewCreateSuccessEvent(
 			mockId,
-			version.toString()
+			expectedName,
+			age,
+			version
 		)
 
 		// ACT
@@ -35,16 +37,26 @@ describe('handleCreateSuccess', () => {
 		// ASSERT
 		assert.fieldEquals('MyEntity', mockId, 'id', mockId)
 		assert.fieldEquals('MyEntity', mockId, 'name', expectedName)
-		assert.fieldEquals('MyEntity', mockId, 'age', expectedAge)
+		assert.fieldEquals('MyEntity', mockId, 'age', age)
 	})
 })
 
-export function createNewCreateSuccessEvent(id: string, version: string): CreateSuccess {
+export function createNewCreateSuccessEvent(id: string, name: string, age: string, version: string): CreateSuccess {
 	let newCreateSuccessEvent = changetype<CreateSuccess>(newMockEvent());
+
+	let tupleArray: Array<ethereum.Value> = [
+		ethereum.Value.fromString(name),
+		ethereum.Value.fromSignedBigInt(BigInt.fromString(age))
+	]
+
+	let tuple = changetype<ethereum.Tuple>(tupleArray)
+	let encoded = ethereum.encode(ethereum.Value.fromTuple(tuple))!
+	let data = encoded.toHexString()
 
 	let parameters: Array<ethereum.EventParam> = [
 		new ethereum.EventParam("id", ethereum.Value.fromString(id)),
-		new ethereum.EventParam("version", ethereum.Value.fromUnsignedBigInt(BigInt.fromString(version))),
+		new ethereum.EventParam("data", ethereum.Value.fromBytes(Bytes.fromHexString(data))),
+		new ethereum.EventParam("version", ethereum.Value.fromUnsignedBigInt(BigInt.fromString(version)))
 	]
 
 	newCreateSuccessEvent.parameters = parameters;
