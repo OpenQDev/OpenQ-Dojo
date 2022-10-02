@@ -21,6 +21,6 @@ dataSources:
       eventHandlers:
         - event: CreateSuccess(string,string)
           handler: handleCreateSuccess
-        - event: AddAge(string,uint256)
-          handler: handleAddAge
+        # - event: AddAge(string,uint256)
+        #   handler: handleAddAge
       file: ./src/mapping.ts

@@ -1,7 +1,8 @@
 {
 	"name": "AddNewEvent",
-	"license": "UNLICENSED",
+	"license": "MIT",
 	"scripts": {
+		"ethnode": "hardhat node",
 		"codegen": "graph codegen",
 		"build": "graph build",
 		"test": "graph test",
@@ -16,6 +17,6 @@
 		"hardhat": "^2.11.2"
 	},
 	"devDependencies": {
-		"matchstick-as": "^0.5.0"
+		"matchstick-as": "0.5.0"
 	}
 }

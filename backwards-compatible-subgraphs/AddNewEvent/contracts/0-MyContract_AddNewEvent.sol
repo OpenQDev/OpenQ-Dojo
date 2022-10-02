@@ -10,16 +10,16 @@ contract MyContractV1_AddNewEvent {
     }
 }
 
-contract MyContractV2_AddNewEvent is MyContractV1_AddNewEvent {
-    uint8 public constant VERSION_2 = 2;
-    event AddAge(string id, uint256 age);
+// contract MyContractV2_AddNewEvent is MyContractV1_AddNewEvent {
+//     uint8 public constant VERSION_2 = 2;
+//     event AddAge(string id, uint256 age);
 
-    function addFoo(
-        string calldata id,
-        string calldata name,
-        uint256 age
-    ) external {
-        emit CreateSuccess(id, name);
-        emit AddAge(id, age);
-    }
-}
+//     function addFoo(
+//         string calldata id,
+//         string calldata name,
+//         uint256 age
+//     ) external {
+//         emit CreateSuccess(id, name);
+//         emit AddAge(id, age);
+//     }
+// }

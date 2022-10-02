@@ -1,8 +1,9 @@
 {
 	"name": "AddNewEvent",
-	"license": "UNLICENSED",
+	"license": "MIT",
 	"scripts": {
 		"codegen": "graph codegen",
+		"deploy-contract": "graph codegen",
 		"build": "graph build",
 		"test": "graph test",
 		"deploy": "graph deploy --node https://api.thegraph.com/deploy/ OpenQDojo/AddNewEvent",
@@ -12,10 +13,10 @@
 	},
 	"dependencies": {
 		"@graphprotocol/graph-cli": "0.22.3",
-		"@graphprotocol/graph-ts": "0.22.1",
+		"@graphprotocol/graph-ts": "0.27.0",
 		"hardhat": "^2.11.2"
 	},
 	"devDependencies": {
-		"matchstick-as": "^0.5.0"
+		"matchstick-as": "0.5.0"
 	}
 }
